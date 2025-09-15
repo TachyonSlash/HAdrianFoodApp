@@ -1,11 +1,13 @@
 package com.pjsoft.foodapp.screens
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
@@ -27,10 +29,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import coil.compose.AsyncImage
 import com.pjsoft.foodapp.R
 import com.pjsoft.foodapp.models.Category
 import com.pjsoft.foodapp.models.categories
+import com.pjsoft.foodapp.models.restaurants
 
 
 @Composable
@@ -112,6 +116,49 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         Text(text = Category.name)
                     }
                 }
+        }
+
+        Text("Busca los mejores restaurantes",
+                fontSize = MaterialTheme.typography.headlineMedium.fontSize,
+                modifier = Modifier
+                    .padding(start = 10.dp, top = 25.dp, bottom = 10.dp)
+            )
+
+        LazyRow (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 10.dp, end = 10.dp)
+        ) {
+            items(restaurants) { Restaurant ->
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Button(
+                            onClick = { },
+                            shape = CircleShape,
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                            modifier = Modifier.size(110.dp)
+                        ) {
+                        }
+                        AsyncImage(
+                            model = Restaurant.imagen,
+                            contentDescription = Restaurant.nombre,
+                            modifier = Modifier
+                                .size(100.dp)
+                                .clip(CircleShape),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Spacer(modifier = Modifier.size(8.dp))
+                    Text(
+                        text = Restaurant.nombre,
+                        modifier = Modifier.offset(y = -6.dp)
+                    )
+                }
+            }
         }
 
     }

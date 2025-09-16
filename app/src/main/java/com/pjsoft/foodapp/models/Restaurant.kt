@@ -6,7 +6,7 @@ data class Restaurant(
 )
 
 val restaurants = listOf(
-    Restaurant("Burger King", "https://i.pinimg.com/736x/ca/38/ca/ca38cabfc7f07d97a422859b91df07cd.jpg"),
+    Restaurant("Burger King", "https://static.vecteezy.com/system/resources/thumbnails/019/909/468/small/burger-king-transparent-burger-king-free-free-png.png"),
     Restaurant("McDonald's", "https://hipfonts.com/wp-content/uploads/2022/08/McDonalds-logo-cover.jpg"),
     Restaurant("KFC", "https://toppng.com/uploads/preview/kfc-logo-11563249058wxuvh8kia1.png"),
     Restaurant("Domino's Pizza", "https://logos-world.net/wp-content/uploads/2021/08/Dominos-Logo.png"),

@@ -106,19 +106,23 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         .padding(end = 10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Button(
-                        onClick = { },
-                        shape = CircleShape,
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF44336)),
-                        modifier = Modifier
-                            .size(70.dp)
+                    Box(
+                        contentAlignment = Alignment.Center
                     ) {
+                        Button(
+                            onClick = { },
+                            shape = CircleShape,
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF44336)),
+                            modifier = Modifier.size(70.dp)
+                        ) {
+                        }
                         AsyncImage(
                             model = Category.image,
                             contentDescription = Category.name,
                             modifier = Modifier
-                                .fillMaxSize()
-                                .clip(CircleShape)
+                                .size(60.dp)
+                                .clip(CircleShape),
+                            contentScale = ContentScale.Crop
                         )
                     }
                     Spacer(modifier = Modifier.size(8.dp))
@@ -140,6 +144,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         ) {
             items(restaurants) { Restaurant ->
                 Column(
+                    modifier = Modifier
+                        .padding(end = 10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Box(
